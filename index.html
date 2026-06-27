@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peak Surge Digital | Social Media & Web Design | Pacific Northwest</title>
+<meta name="description" content="Peak Surge Digital helps local businesses in the Pacific Northwest grow through strategic social media management, professional website design, and consistent online presence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --navy:      #0A1628;
+    --navy-mid:  #111F38;
+    --navy-soft: #1B2A45;
+    --cyan:      #00C2CB;
+    --cyan-dim:  #00939A;
+    --cream:     #F5F2ED;
+    --white:     #FFFFFF;
+    --grey-1:    #8A97A8;
+    --grey-2:    #C8D0DC;
+    --amber:     #F5A623;
+    --green:     #27AE60;
+    --radius:    6px;
+    --max:       1120px;
+  }
+
+  /* ── RESET ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* ── TYPOGRAPHY ── */
+  .syne { font-family: 'Barlow', sans-serif; }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+  h1, h2, h3 { font-family: 'Barlow', sans-serif; line-height: 1.1; }
+  h1 { font-size: clamp(42px, 6vw, 80px); font-weight: 900; letter-spacing: -0.03em; }
+  h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em; }
+  h3 { font-size: clamp(18px, 2vw, 22px); font-weight: 700; letter-spacing: -0.01em; }
+  p { font-size: 15px; line-height: 1.75; color: var(--grey-2); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .section { padding: 100px 0; }
+  .section-sm { padding: 60px 0; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 0;
+    transition: background 0.3s, padding 0.3s, backdrop-filter 0.3s;
+  }
+  nav.scrolled {
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(12px);
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: var(--max); margin: 0 auto; padding: 0 24px;
+  }
+  .nav-logo {
+    font-family: 'Barlow', sans-serif;
+    font-size: 18px; font-weight: 800;
+    color: var(--white);
+    display: flex; align-items: center; gap: 12px;
+    line-height: 1.1;
+  }
+  .nav-logo-mark {
+    width: 42px; height: 34px;
+    flex-shrink: 0;
+    display: flex; align-items: center;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px; font-weight: 500;
+    color: var(--grey-2);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--cyan);
+    color: var(--navy) !important;
+    font-weight: 700 !important;
+    padding: 10px 22px;
+    border-radius: var(--radius);
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: #00d4de !important; transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 140px 0 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 60% at 60% 30%, rgba(0,194,203,0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,194,203,0.04) 0%, transparent 60%);
+  }
+  /* Signature element: diagonal surge lines */
+  .hero-lines {
+    position: absolute; top: 0; right: -100px; bottom: 0;
+    width: 55%; pointer-events: none; overflow: hidden;
+  }
+  .hero-lines svg { width: 100%; height: 100%; }
+  .hero-content { position: relative; max-width: 680px; }
+  .hero .eyebrow { margin-bottom: 24px; }
+  .hero h1 {
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.0;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--cyan);
+  }
+  .hero-sub {
+    font-size: 17px; line-height: 1.7;
+    color: var(--grey-1);
+    max-width: 520px;
+    margin-bottom: 44px;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--cyan);
+    color: var(--navy);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px; font-weight: 700;
+    padding: 16px 32px;
+    border-radius: var(--radius);
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #00d4de; transform: translateY(-2px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--cream);
+    font-size: 14px; font-weight: 500;
+    padding: 16px 0;
+    border: none; background: none; cursor: pointer;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--cyan); }
+  .btn-ghost svg { transition: transform 0.2s; }
+  .btn-ghost:hover svg { transform: translateX(4px); }
+  .hero-stats {
+    display: flex; gap: 0;
+    margin-top: 64px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 40px;
+  }
+  .hero-stat {
+    flex: 1; padding-right: 32px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    margin-right: 32px;
+  }
+  .hero-stat:last-child { border-right: none; margin-right: 0; }
+  .hero-stat .num {
+    font-family: 'Barlow', sans-serif;
+    font-size: 36px; font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .hero-stat .num span { color: var(--cyan); }
+  .hero-stat .lbl {
+    font-size: 12px; color: var(--grey-1);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--cyan);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-track {
+    display: inline-flex;
+    animation: ticker 30s linear infinite;
+  }
+  .ticker-item {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0 40px;
+  }
+  .ticker-dot { color: rgba(10,22,40,0.4); }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── ABOUT / WHO WE ARE ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .about-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .about-card-main {
+    display: flex; flex-direction: column;
+    border-left: 3px solid var(--cyan);
+  }
+  .about-card-float {
+    width: 100%;
+    background: var(--navy-soft);
+    text-align: center;
+    padding: 24px;
+  }
+  .about-card-float .big {
+    font-family: 'Barlow', sans-serif;
+    font-size: 40px; font-weight: 800;
+    color: var(--cyan);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .about-card-float .small {
+    font-size: 11px; color: var(--grey-1);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .card-label {
+    font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--cyan);
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .card-body { font-size: 13px; color: var(--grey-1); line-height: 1.6; }
+  .check-list { list-style: none; margin-top: 20px; }
+  .check-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: var(--grey-2);
+    margin-bottom: 10px;
+  }
+  .check-list li::before {
+    content: '✓';
+    color: var(--cyan); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .about-text h2 { color: var(--white); margin-bottom: 20px; }
+  .about-text p { margin-bottom: 20px; }
+  .about-text .highlight {
+    background: rgba(0,194,203,0.08);
+    border-left: 3px solid var(--cyan);
+    padding: 16px 20px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin: 28px 0;
+  }
+  .about-text .highlight p {
+    color: var(--cream); font-size: 14px;
+    font-style: italic; margin: 0;
+  }
+
+  /* ── SERVICES ── */
+  .services-bg { background: var(--navy-mid); }
+  .services-header { text-align: center; margin-bottom: 64px; }
+  .services-header h2 { color: var(--white); margin-top: 12px; margin-bottom: 16px; }
+  .services-header p { max-width: 540px; margin: 0 auto; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--navy);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 36px 28px;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--cyan);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: rgba(0,194,203,0.3); transform: translateY(-4px); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 52px; height: 52px;
+    background: rgba(0,194,203,0.1);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+  .service-card h3 { color: var(--white); margin-bottom: 12px; }
+  .service-card p { font-size: 14px; margin-bottom: 20px; }
+  .service-features { list-style: none; }
+  .service-features li {
+    font-size: 13px; color: var(--grey-2);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .service-features li:last-child { border-bottom: none; }
+  .service-features li::before { content: '→'; color: var(--cyan); font-size: 12px; }
+
+  /* ── PRICING ── */
+  .pricing-header { text-align: center; margin-bottom: 64px; }
+  .pricing-header h2 { color: var(--white); margin-top: 12px; margin-bottom: 16px; }
+  .pricing-toggle {
+    display: inline-flex;
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 40px;
+    padding: 4px;
+    margin: 24px auto 0;
+    gap: 4px;
+  }
+  .toggle-btn {
+    padding: 8px 20px;
+    border-radius: 36px;
+    font-size: 13px; font-weight: 600;
+    border: none; cursor: pointer;
+    transition: 0.2s;
+    background: transparent;
+    color: var(--grey-1);
+  }
+  .toggle-btn.active { background: var(--cyan); color: var(--navy); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .price-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 36px 28px;
+    position: relative;
+    transition: transform 0.3s;
+  }
+  .price-card:hover { transform: translateY(-4px); }
+  .price-card.featured {
+    background: var(--navy-soft);
+    border-color: var(--cyan);
+    border-width: 2px;
+  }
+  .featured-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--cyan);
+    color: var(--navy);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 16px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .price-tier {
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--cyan);
+    margin-bottom: 8px;
+  }
+  .price-name {
+    font-family: 'Barlow', sans-serif;
+    font-size: 22px; font-weight: 800;
+    color: var(--white); margin-bottom: 4px;
+  }
+  .price-tagline { font-size: 13px; color: var(--grey-1); margin-bottom: 28px; }
+  .price-amount {
+    display: flex; align-items: baseline; gap: 4px;
+    margin-bottom: 8px;
+  }
+  .price-amount .dollar {
+    font-family: 'Barlow', sans-serif;
+    font-size: 48px; font-weight: 800;
+    color: var(--white); line-height: 1;
+  }
+  .price-amount .per {
+    font-size: 14px; color: var(--grey-1);
+  }
+  .price-setup {
+    font-size: 12px; color: var(--grey-1);
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .price-setup strong { color: var(--cream); }
+  .price-features { list-style: none; margin-bottom: 32px; }
+  .price-features li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: var(--grey-2);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .price-features li:last-child { border-bottom: none; }
+  .price-features li .check { color: var(--cyan); flex-shrink: 0; font-weight: 700; }
+  .price-cta {
+    display: block; width: 100%;
+    padding: 14px;
+    border-radius: var(--radius);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px; font-weight: 700;
+    text-align: center; cursor: pointer;
+    border: none; transition: 0.2s;
+  }
+  .price-cta-primary { background: var(--cyan); color: var(--navy); }
+  .price-cta-primary:hover { background: #00d4de; }
+  .price-cta-ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--cream);
+  }
+  .price-cta-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* Bundle pricing note */
+  .bundle-note {
+    margin-top: 48px;
+    background: var(--navy-mid);
+    border: 1px solid rgba(0,194,203,0.2);
+    border-radius: 10px;
+    padding: 32px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+  }
+  .bundle-note-text h3 { color: var(--white); margin-bottom: 8px; font-size: 18px; }
+  .bundle-note-text p { font-size: 14px; max-width: 520px; }
+  .bundle-prices {
+    display: flex; gap: 28px; flex-shrink: 0; flex-wrap: wrap;
+  }
+  .bundle-price-item { text-align: center; }
+  .bundle-price-item .bnum {
+    font-family: 'Barlow', sans-serif;
+    font-size: 22px; font-weight: 800;
+    color: var(--cyan); display: block; line-height: 1;
+  }
+  .bundle-price-item .blbl {
+    font-size: 11px; color: var(--grey-1);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 4px; display: block;
+  }
+
+  /* ── PROCESS ── */
+  .process-bg { background: var(--navy-mid); }
+  .process-header { text-align: center; margin-bottom: 64px; }
+  .process-header h2 { color: var(--white); margin-top: 12px; margin-bottom: 16px; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 12.5%; right: 12.5%;
+    height: 1px;
+    background: linear-gradient(to right, var(--cyan), rgba(0,194,203,0.2));
+  }
+  .process-step { padding: 0 16px; text-align: center; }
+  .step-num {
+    width: 56px; height: 56px;
+    background: var(--navy);
+    border: 2px solid var(--cyan);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 18px; font-weight: 800;
+    color: var(--cyan);
+    position: relative; z-index: 1;
+  }
+  .process-step h3 { color: var(--white); font-size: 16px; margin-bottom: 10px; }
+  .process-step p { font-size: 13px; }
+
+  /* ── WHY US ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .why-text h2 { color: var(--white); margin-top: 12px; margin-bottom: 20px; }
+  .why-items { margin-top: 36px; display: flex; flex-direction: column; gap: 24px; }
+  .why-item { display: flex; gap: 20px; align-items: flex-start; }
+  .why-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(0,194,203,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .why-item h4 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px; font-weight: 700;
+    color: var(--white); margin-bottom: 6px;
+  }
+  .why-item p { font-size: 13px; }
+  .why-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .why-stat-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .why-stat-card:first-child {
+    grid-column: span 2;
+    background: var(--navy-soft);
+    border-color: rgba(0,194,203,0.2);
+  }
+  .why-stat-card .wnum {
+    font-family: 'Barlow', sans-serif;
+    font-size: 40px; font-weight: 800;
+    color: var(--cyan); line-height: 1;
+    margin-bottom: 6px;
+  }
+  .why-stat-card .wlbl {
+    font-size: 12px; color: var(--grey-1);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--navy-soft) 0%, var(--navy-mid) 100%);
+    border-top: 1px solid rgba(0,194,203,0.15);
+    border-bottom: 1px solid rgba(0,194,203,0.15);
+    padding: 80px 0;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(0,194,203,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-band h2 { color: var(--white); margin-bottom: 16px; position: relative; }
+  .cta-band p { max-width: 500px; margin: 0 auto 36px; position: relative; }
+  .cta-band .btn-primary { position: relative; font-size: 15px; padding: 18px 40px; }
+
+  /* ── CONTACT ── */
+  .contact-bg { background: var(--navy-mid); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-info h2 { color: var(--white); margin-top: 12px; margin-bottom: 20px; }
+  .contact-info p { margin-bottom: 32px; }
+  .contact-details { display: flex; flex-direction: column; gap: 20px; }
+  .contact-detail { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(0,194,203,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .contact-detail-text .label {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--cyan);
+    margin-bottom: 4px;
+  }
+  .contact-detail-text .value {
+    font-size: 15px; color: var(--cream); font-weight: 500;
+  }
+  .contact-form {
+    background: var(--navy);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 40px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--grey-2); margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--grey-1); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--cyan); }
+  .form-group select option { background: var(--navy-mid); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--cyan);
+    color: var(--navy);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px; font-weight: 700;
+    border: none; border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .form-submit:hover { background: #00d4de; transform: translateY(-1px); }
+  .form-note {
+    text-align: center; margin-top: 16px;
+    font-size: 12px; color: var(--grey-1);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 48px 0 32px;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .nav-logo { margin-bottom: 16px; }
+  .footer-brand p { font-size: 13px; max-width: 280px; }
+  .footer-col h4 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    font-size: 13px; color: var(--grey-1);
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--cyan); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { font-size: 12px; color: var(--grey-1); margin: 0; }
+  .footer-bottom .cyan { color: var(--cyan); }
+
+  /* ── MOBILE NAV ── */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 99;
+    background: var(--navy);
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    gap: 32px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a {
+    font-family: 'Barlow', sans-serif;
+    font-size: 28px; font-weight: 700;
+    color: var(--cream);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--cyan); }
+  .mobile-close {
+    position: absolute; top: 24px; right: 24px;
+    background: none; border: none; cursor: pointer;
+    color: var(--cream); font-size: 28px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid,
+    .why-grid,
+    .contact-grid,
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-visual { height: 280px; }
+    .services-grid,
+    .pricing-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .process-steps::before { display: none; }
+    .why-visual { display: none; }
+    .hero-stats { flex-direction: column; gap: 24px; }
+    .hero-stat { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 24px; }
+    .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .bundle-note { flex-direction: column; text-align: center; }
+    .hero-lines { display: none; }
+  }
+  @media (max-width: 600px) {
+    .section { padding: 64px 0; }
+    .process-steps { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 210" fill="none">
+  <defs>
+    <linearGradient id="psd-navy-1" x1="0" y1="210" x2="260" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#F0F0F0"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="psd-cyan-1" x1="80" y1="200" x2="250" y2="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#05BBD0"/>
+      <stop offset="0.55" stop-color="#14C8D8"/>
+      <stop offset="1" stop-color="#04AFC7"/>
+    </linearGradient>
+  </defs>
+  <path d="M218 10 L218 52 L60 200 L10 200 Z" fill="url(#psd-navy-1)"/>
+  <path d="M242 64 L242 106 L139 200 L90 200 Z" fill="url(#psd-cyan-1)"/>
+  <path d="M242 137 L242 200 L178 200 Z" fill="url(#psd-navy-1)"/>
+</svg></div>
+      <span><span style="color:var(--white);font-weight:800;">PEAK SURGE</span> <span style="color:var(--cyan);font-size:14px;letter-spacing:0.12em;">DIGITAL</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#pricing" class="mobile-link">Pricing</a>
+  <a href="#process" class="mobile-link">How It Works</a>
+  <a href="#contact" class="mobile-link" style="color:var(--cyan)">Get Started →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines">
+    <svg viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="50" y1="900" x2="350" y2="0" stroke="rgba(0,194,203,0.12)" stroke-width="1.5"/>
+      <line x1="150" y1="900" x2="450" y2="0" stroke="rgba(0,194,203,0.07)" stroke-width="1"/>
+      <line x1="280" y1="900" x2="580" y2="0" stroke="rgba(0,194,203,0.05)" stroke-width="1"/>
+      <line x1="0" y1="600" x2="600" y2="200" stroke="rgba(0,194,203,0.08)" stroke-width="1.5"/>
+      <circle cx="350" cy="250" r="180" stroke="rgba(0,194,203,0.05)" stroke-width="1" fill="none"/>
+      <circle cx="350" cy="250" r="100" stroke="rgba(0,194,203,0.07)" stroke-width="1" fill="none"/>
+      <!-- Surge mark large watermark -->
+      <path d="M200 700 L300 400 L370 560 L430 350 L520 700" stroke="rgba(0,194,203,0.15)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 210" fill="none">
+  <defs>
+    <linearGradient id="psd-navy-2" x1="0" y1="210" x2="260" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#F0F0F0"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="psd-cyan-2" x1="80" y1="200" x2="250" y2="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#05BBD0"/>
+      <stop offset="0.55" stop-color="#14C8D8"/>
+      <stop offset="1" stop-color="#04AFC7"/>
+    </linearGradient>
+  </defs>
+  <path d="M218 10 L218 52 L60 200 L10 200 Z" fill="url(#psd-navy-2)"/>
+  <path d="M242 64 L242 106 L139 200 L90 200 Z" fill="url(#psd-cyan-2)"/>
+  <path d="M242 137 L242 200 L178 200 Z" fill="url(#psd-navy-2)"/>
+</svg>
+        <p class="eyebrow" style="margin:0;">Pacific Northwest Digital Marketing Agency</p>
+      </div>
+      <h1>We put your<br>business <em>a step<br>above</em> the rest.</h1>
+      <p class="hero-sub">Peak Surge Digital helps local businesses in Washington and Oregon grow through strategic social media management, professional websites, and a consistent online presence that turns browsers into customers.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          Get a free strategy call
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#pricing" class="btn-ghost">
+          See pricing
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">100<span>+</span></div>
+          <div class="lbl">Posts created per client monthly</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3</div>
+          <div class="lbl">Platforms managed simultaneously</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">90</div>
+          <div class="lbl">Day results guarantee</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">1</div>
+          <div class="lbl">Invoice. One agency. Everything handled.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Social Media Management <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Website Design <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Google Business Profile <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Content Strategy <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Brand Identity <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Pacific Northwest <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Daily Posting <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Review Management <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Multi-Business Bundles <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Social Media Management <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Website Design <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Google Business Profile <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Content Strategy <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Brand Identity <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Pacific Northwest <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Daily Posting <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Review Management <span class="ticker-dot">✦</span></span>
+    <span class="ticker-item">Multi-Business Bundles <span class="ticker-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-card about-card-main">
+          <div>
+            <div class="card-label">Our Mission</div>
+            <div class="card-title">Your business deserves to be seen.</div>
+            <div class="card-body">Most local businesses have a great product and terrible online presence. We fix that — completely, professionally, and without adding anything to your plate.</div>
+          </div>
+          <ul class="check-list">
+            <li>No long-term contracts required after 90 days</li>
+            <li>You keep full ownership of all accounts</li>
+            <li>Direct access — no junior staff handling your account</li>
+            <li>Results tracked and reported every single month</li>
+          </ul>
+        </div>
+        <div class="about-card about-card-float">
+          <div class="big">PNW</div>
+          <div class="small">Pacific Northwest Focused</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="eyebrow">Who We Are</p>
+        <h2>A Pacific Northwest agency built for local business.</h2>
+        <p>Peak Surge Digital was built on one observation: local businesses in Washington and Oregon have real value, loyal customers, and great stories — but almost none of them have a social media presence that reflects that.</p>
+        <p>We're not a large agency where your account gets handed to a junior employee after the pitch. We're a focused, systems-driven agency that uses the best AI tools available to deliver more content, faster, and at a higher quality than most agencies twice our size.</p>
+        <div class="highlight">
+          <p>"We handle the strategy, the design, the captions, the scheduling, the analytics, and the growth. You handle running your business. That's the deal."</p>
+        </div>
+        <p>We specialize in restaurants, home services, trades, and local retail across the Pacific Northwest — businesses that depend on local visibility and community trust to grow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services-bg" id="services">
+  <div class="container">
+    <div class="services-header">
+      <p class="eyebrow">What We Do</p>
+      <h2>Everything your business needs<br>to dominate locally.</h2>
+      <p>Three core services. One agency. One invoice. No confusion about who handles what.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>Social Media Management</h3>
+        <p>Daily content across Instagram, Facebook, and Google Business Profile — designed, written, scheduled, and published for you every single month.</p>
+        <ul class="service-features">
+          <li>Branded graphics and captions daily</li>
+          <li>Reels and short-form video content</li>
+          <li>Instagram Stories every day</li>
+          <li>Google Business Profile weekly</li>
+          <li>Community engagement and DM management</li>
+          <li>Review responses within 48 hours</li>
+          <li>Monthly analytics report</li>
+          <li>30 or 45-minute strategy call monthly</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h3>Website Design</h3>
+        <p>Professional, fast, mobile-optimized websites built to convert visitors into customers. Clean design, strong copy, and built to rank locally.</p>
+        <ul class="service-features">
+          <li>5 to 7 page professional website</li>
+          <li>Mobile-first design and development</li>
+          <li>On-page SEO built in from day one</li>
+          <li>Google Analytics and Search Console setup</li>
+          <li>Contact forms and lead capture</li>
+          <li>Online ordering or booking integration</li>
+          <li>Fast load times optimized for local search</li>
+          <li>Quoted separately from social media</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3>Hosting & Care Plans</h3>
+        <p>We host and maintain your website so you never have to think about security, backups, or updates. Your site stays fast, safe, and current — always.</p>
+        <ul class="service-features">
+          <li>Professional monthly hosting</li>
+          <li>SSL certificate and HTTPS security</li>
+          <li>Daily automated backups</li>
+          <li>Security monitoring 24/7</li>
+          <li>Uptime monitoring and alerts</li>
+          <li>Minor content updates included</li>
+          <li>One monthly invoice covers everything</li>
+          <li>Cancel anytime after 12 months</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <p class="eyebrow">Transparent Pricing</p>
+      <h2>Simple packages. No surprises.<br>No hidden fees.</h2>
+      <p>All packages include a one-time setup fee of $1,497 that covers your brand kit, profile optimization, content strategy, and first calendar build.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <div class="price-tier">Starter</div>
+        <div class="price-name">Presence</div>
+        <div class="price-tagline">Professional consistency without the complexity</div>
+        <div class="price-amount">
+          <span class="dollar">$800</span>
+          <span class="per">/month</span>
+        </div>
+        <div class="price-setup">+ <strong>$1,497</strong> one-time setup fee</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span>Instagram + Facebook managed</li>
+          <li><span class="check">✓</span>15 posts per platform per month</li>
+          <li><span class="check">✓</span>Google Business Profile — 2 posts/month</li>
+          <li><span class="check">✓</span>Instagram Stories 2x per week</li>
+          <li><span class="check">✓</span>Branded graphics and captions</li>
+          <li><span class="check">✓</span>Client approval before posting</li>
+          <li><span class="check">✓</span>Monthly performance summary</li>
+          <li><span class="check">✓</span>1 revision round per batch</li>
+        </ul>
+        <a href="#contact" class="price-cta price-cta-ghost">Get started</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="featured-badge">Most Popular</div>
+        <div class="price-tier">Growth</div>
+        <div class="price-name">Momentum</div>
+        <div class="price-tagline">Daily visibility that actually drives foot traffic</div>
+        <div class="price-amount">
+          <span class="dollar">$1,500</span>
+          <span class="per">/month</span>
+        </div>
+        <div class="price-setup">+ <strong>$1,497</strong> one-time setup fee</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span>Instagram + Facebook + GBP managed</li>
+          <li><span class="check">✓</span>1 post per day on Instagram and Facebook</li>
+          <li><span class="check">✓</span>Google Business Profile — weekly posts</li>
+          <li><span class="check">✓</span>8 Reels per month across IG and FB</li>
+          <li><span class="check">✓</span>Instagram Stories daily</li>
+          <li><span class="check">✓</span>Community engagement and DM management</li>
+          <li><span class="check">✓</span>Review responses within 48 hours</li>
+          <li><span class="check">✓</span>Monthly analytics report</li>
+          <li><span class="check">✓</span>30-minute strategy call monthly</li>
+          <li><span class="check">✓</span>2 revision rounds per batch</li>
+        </ul>
+        <a href="#contact" class="price-cta price-cta-primary">Get started</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-tier">Authority</div>
+        <div class="price-name">Dominance</div>
+        <div class="price-tagline">Maximum visibility. Total local market ownership.</div>
+        <div class="price-amount">
+          <span class="dollar">$2,500</span>
+          <span class="per">/month</span>
+        </div>
+        <div class="price-setup">+ <strong>$1,497</strong> one-time setup fee</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span>Everything in Growth, plus:</li>
+          <li><span class="check">✓</span>2 posts per day on Instagram</li>
+          <li><span class="check">✓</span>16 Reels per month</li>
+          <li><span class="check">✓</span>GBP updated 2x per week</li>
+          <li><span class="check">✓</span>Multiple Stories per day</li>
+          <li><span class="check">✓</span>Daily DM and comment management</li>
+          <li><span class="check">✓</span>Review responses within 24 hours</li>
+          <li><span class="check">✓</span>Full competitor analysis monthly</li>
+          <li><span class="check">✓</span>Priority turnaround on all content</li>
+          <li><span class="check">✓</span>45-minute strategy call monthly</li>
+          <li><span class="check">✓</span>Minor website updates — 1hr/month</li>
+        </ul>
+        <a href="#contact" class="price-cta price-cta-ghost">Get started</a>
+      </div>
+
+    </div>
+
+
+    <!-- Setup Fee Explanation -->
+    <div style="margin-top: 48px; background: var(--navy-mid); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07);">
+
+      <!-- Header bar -->
+      <div style="background: var(--navy-soft); padding: 20px 32px; border-bottom: 1px solid rgba(0,194,203,0.2); display: flex; align-items: center; gap: 14px;">
+        <div style="width: 4px; height: 36px; background: var(--cyan); border-radius: 2px; flex-shrink: 0;"></div>
+        <div>
+          <p style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan); margin: 0 0 4px 0; font-weight: 600;">Transparency</p>
+          <h3 style="font-family: 'Barlow', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin: 0;">Why is there a one-time setup fee?</h3>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div style="padding: 32px;">
+        <p style="font-size: 15px; color: var(--grey-2); line-height: 1.75; margin-bottom: 24px;">Before a single post ever goes live, there is a significant amount of real, skilled work that happens behind the scenes. The setup fee covers every hour of that foundational work — and it is what separates a professional agency engagement from someone who just starts posting randomly with no strategy. Here is exactly what your setup fee covers:</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;">
+
+          <div style="background: var(--navy); border-radius: 8px; padding: 20px; border-left: 3px solid var(--cyan);">
+            <p style="font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Full Platform Audit</p>
+            <p style="font-size: 13px; color: var(--grey-2); line-height: 1.6; margin: 0;">We review every existing social media profile, Google Business listing, and online presence before touching anything. We identify exactly what is working, what is broken, and what is missing entirely.</p>
+          </div>
+
+          <div style="background: var(--navy); border-radius: 8px; padding: 20px; border-left: 3px solid var(--cyan);">
+            <p style="font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Brand Kit Creation</p>
+            <p style="font-size: 13px; color: var(--grey-2); line-height: 1.6; margin: 0;">We build a complete visual identity system — your exact color palette, typography, logo usage rules, and graphic templates. Every post we create uses this system so your brand looks consistent and professional across every platform, every time.</p>
+          </div>
+
+          <div style="background: var(--navy); border-radius: 8px; padding: 20px; border-left: 3px solid var(--cyan);">
+            <p style="font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Profile Optimization</p>
+            <p style="font-size: 13px; color: var(--grey-2); line-height: 1.6; margin: 0;">Every profile gets rewritten from scratch — bio, category, contact info, links, highlights, and cover images — all optimized for local search and first impressions. This alone is worth the setup fee.</p>
+          </div>
+
+          <div style="background: var(--navy); border-radius: 8px; padding: 20px; border-left: 3px solid var(--cyan);">
+            <p style="font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Content Strategy Build</p>
+            <p style="font-size: 13px; color: var(--grey-2); line-height: 1.6; margin: 0;">We develop your content pillars, posting schedule, tone of voice, and the specific angles that will resonate with your audience. This is the strategic foundation everything else is built on.</p>
+          </div>
+
+          <div style="background: var(--navy); border-radius: 8px; padding: 20px; border-left: 3px solid var(--cyan);">
+            <p style="font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">First Content Calendar</p>
+            <p style="font-size: 13px; color: var(--grey-2); line-height: 1.6; margin: 0;">Your first full month of content is planned, designed, written, and ready for your approval before we ever charge you a monthly retainer. You see exactly what you are getting before the recurring billing begins.</p>
+          </div>
+
+          <div style="background: var(--navy); border-radius: 8px; padding: 20px; border-left: 3px solid var(--cyan);">
+            <p style="font-size: 12px; font-weight: 700; color: var(--cyan); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Platform Setup & Linking</p>
+            <p style="font-size: 13px; color: var(--grey-2); line-height: 1.6; margin: 0;">Facebook, Instagram, and Google Business Profile are all connected, cross-linked, and configured correctly so content flows efficiently and nothing falls through the cracks.</p>
+          </div>
+
+        </div>
+
+        <div style="background: var(--navy); border-radius: 8px; padding: 20px 24px; border: 1px solid rgba(0,194,203,0.2);">
+          <p style="font-size: 14px; color: var(--cream); line-height: 1.75; margin: 0;"><strong style="color: var(--cyan);">The bottom line:</strong> The setup fee is not a barrier to entry. It is the investment that ensures everything we build for your business is done correctly from day one — so the monthly retainer actually delivers results instead of just filling a content calendar with random posts.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bundle note -->
+    <div class="bundle-note">
+      <div class="bundle-note-text">
+        <h3>Own multiple businesses? We built a bundle for that.</h3>
+        <p>One owner. Multiple businesses. One organized system, one strategy call, and one invoice per month. We pass the efficiency savings directly to you — the more businesses you bring, the more you save versus managing them separately.</p>
+      </div>
+      <div class="bundle-prices">
+        <div class="bundle-price-item">
+          <span class="bnum">$2,400</span>
+          <span class="blbl">2 businesses/mo</span>
+        </div>
+        <div class="bundle-price-item">
+          <span class="bnum">$3,200</span>
+          <span class="blbl">3 businesses/mo</span>
+        </div>
+        <div>
+          <a href="#contact" class="btn-primary" style="font-size:13px; padding: 12px 24px;">Get a custom quote</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process-bg" id="process">
+  <div class="container">
+    <div class="process-header">
+      <p class="eyebrow">How It Works</p>
+      <h2>From signed to posting in 7 days.</h2>
+      <p>A simple four-step process that gets your business live on social media fast — and keeps it running without you having to think about it.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>Strategy Call</h3>
+        <p>We learn your business, your goals, and your audience. Free, no pressure, 30 minutes.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>Setup & Brand Kit</h3>
+        <p>We build your brand kit, optimize every profile, and plan your first month of content. You approve everything before it goes live.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>Content Goes Live</h3>
+        <p>Your first post goes live within 7 business days of signing. After that, content publishes automatically every day.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h3>Grow & Report</h3>
+        <p>Monthly analytics report, strategy call, and continuous optimization. You watch the numbers grow. We do the work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-text">
+        <p class="eyebrow">Why Peak Surge Digital</p>
+        <h2>We're not just another agency.</h2>
+        <p>The Pacific Northwest is full of marketing agencies that overpromise and underdeliver. We're built differently — smaller by design, focused on local businesses, and obsessed with actual results over vanity metrics.</p>
+        <div class="why-items">
+          <div class="why-item">
+            <div class="why-icon">🎯</div>
+            <div>
+              <h4>Local business specialists</h4>
+              <p>We only work with restaurants, trades, home services, and local retail. We understand your customers, your seasonality, and what actually drives foot traffic in your market.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">⚡</div>
+            <div>
+              <h4>AI-powered efficiency</h4>
+              <p>We use the most advanced AI content tools available to deliver more content, faster, and at a higher quality level than agencies three times our size — without sacrificing the human strategy behind every post.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🔒</div>
+            <div>
+              <h4>You own everything</h4>
+              <p>Your accounts, your content, your website. We're managers — not owners. If you ever leave, everything stays with you. No lock-in beyond the initial 90-day commitment.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">📊</div>
+            <div>
+              <h4>Radical transparency</h4>
+              <p>Monthly reports show exactly what's happening — reach, engagement, follower growth, website clicks, Google calls. No fluff. No hiding behind vanity metrics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="why-stat-card">
+          <div class="wnum">90%+</div>
+          <div class="wlbl">of our clients' competitors are not posting consistently</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum">3x</div>
+          <div class="wlbl">More reach with daily vs weekly posting</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum">#1</div>
+          <div class="wlbl">GBP boosts local search rank</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum">7</div>
+          <div class="wlbl">Days to first post live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to put your business<br>a step above the competition?</h2>
+    <p>Book a free 30-minute strategy call. We'll audit your current online presence and tell you exactly what we'd do — no pressure, no obligation.</p>
+    <a href="#contact" class="btn-primary">
+      Book your free strategy call
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="section contact-bg" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="eyebrow">Get In Touch</p>
+        <h2>Let's talk about your business.</h2>
+        <p>Fill out the form and we'll get back to you within one business day. If you'd rather talk directly, call or text us anytime.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail-text">
+              <div class="label">Phone / Text</div>
+              <div class="value">(360) 270-6607</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">📧</div>
+            <div class="contact-detail-text">
+              <div class="label">Email</div>
+              <div class="value">mason@peaksurgedigital.com</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail-text">
+              <div class="label">Location</div>
+              <div class="value">Pacific Northwest, Washington State</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail-text">
+              <div class="label">Response Time</div>
+              <div class="value">Within 1 business day</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form id="contactForm" action="https://formspree.io/f/xvzjaaqg" method="POST" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="first_name" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="last_name" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@yourbusiness.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(360) 000-0000">
+          </div>
+          <div class="form-group">
+            <label for="business">Business Name</label>
+            <input type="text" id="business" name="business_name" placeholder="Your Business Name">
+          </div>
+          <div class="form-group">
+            <label for="interest">I'm interested in</label>
+            <select id="interest" name="interested_in">
+              <option value="">Select a service...</option>
+              <option>Social Media Management — Starter ($800/mo)</option>
+              <option>Social Media Management — Growth ($1,500/mo)</option>
+              <option>Social Media Management — Authority ($2,500/mo)</option>
+              <option>Multi-Business Bundle</option>
+              <option>Website Design</option>
+              <option>Website Hosting & Care Plan</option>
+              <option>Everything — Let's talk</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your business</label>
+            <textarea id="message" name="message" placeholder="What does your business do? What are your main goals? Any questions?"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+          <p class="form-note">No spam. No pressure. We'll respond within 1 business day.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 210" fill="none">
+  <defs>
+    <linearGradient id="psd-navy-3" x1="0" y1="210" x2="260" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#F0F0F0"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="psd-cyan-3" x1="80" y1="200" x2="250" y2="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#05BBD0"/>
+      <stop offset="0.55" stop-color="#14C8D8"/>
+      <stop offset="1" stop-color="#04AFC7"/>
+    </linearGradient>
+  </defs>
+  <path d="M218 10 L218 52 L60 200 L10 200 Z" fill="url(#psd-navy-3)"/>
+  <path d="M242 64 L242 106 L139 200 L90 200 Z" fill="url(#psd-cyan-3)"/>
+  <path d="M242 137 L242 200 L178 200 Z" fill="url(#psd-navy-3)"/>
+</svg></div>
+          <span><span style="color:var(--white);font-weight:800;">PEAK SURGE</span> <span style="color:var(--cyan);font-size:14px;letter-spacing:0.12em;">DIGITAL</span></span>
+        </div>
+        <p>Helping local businesses in the Pacific Northwest grow through strategic social media, professional websites, and a consistent online presence.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Social Media Management</a></li>
+          <li><a href="#services">Website Design</a></li>
+          <li><a href="#services">Hosting & Care Plans</a></li>
+          <li><a href="#pricing">Multi-Business Bundles</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="tel:3602706607">(360) 270-6607</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Peak Surge Digital. All rights reserved. Pacific Northwest.</p>
+      <p>Built for local businesses. Powered by <span class="cyan">strategy</span>.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Message sent! We\'ll be in touch soon.';
+    btn.style.background = '#27AE60';
+    btn.disabled = true;
+  }
+
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Intersection observer for subtle fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .price-card, .why-item, .process-step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
